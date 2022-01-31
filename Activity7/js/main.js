@@ -26,7 +26,7 @@ d3.csv('data/disasters.csv')
   		let justThisYear = data.filter( d => d.year == i ); //only include the selected year
   		let cost = d3.sum(justThisYear, d => d.cost); //sum over the filtered array, for the cost field
 
-  		costsPerYear.push( {"year": date, "cost":cost});
+  		costsPerYear.push( {"year": i, "cost":cost});
 
   	}
 
@@ -35,6 +35,13 @@ d3.csv('data/disasters.csv')
 		let timelineCircles = new TimelineCircles({
 			'parentElement': '#timeline',
 			'containerHeight': 1100,
+			'containerWidth': 1000
+		}, data);
+
+	// Create an instance (for example in main.js)
+		let line = new Line({
+			'parentElement': '#line',
+			'containerHeight': 200,
 			'containerWidth': 1000
 		}, data);
 
